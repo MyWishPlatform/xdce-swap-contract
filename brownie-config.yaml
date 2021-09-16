@@ -1,0 +1,16 @@
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.3.1
+  - uniswap/uniswap-lib@2.1.0
+
+autofetch_sources: true
+dotenv: .env
+
+compiler:
+  solc:
+    version: 0.8.7
+    optimizer:
+      enabled: true
+      runs: 999999
+    remappings:
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.3.1"
+      - "@uniswap/lib=uniswap/uniswap-lib@2.1.0"

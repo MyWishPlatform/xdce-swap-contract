@@ -43,9 +43,9 @@ contract SwapContract is AccessControlEnumerable
         IERC20 _tokenAddress,
         address validatorAddress,
         uint128 [3] memory _swapRatios,
-        uint256 _maxSwapAmountPerTx,
+        bool [3] memory _swapEnabled,
         uint256 _minSwapAmountPerTx,
-        bool [3] memory _swapEnabled
+        uint256 _maxSwapAmountPerTx
     )
     {
         swapRatios = _swapRatios;

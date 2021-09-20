@@ -13,8 +13,8 @@ def token(Token, accounts):
     return Token.deploy(
         "Token",
         "TOKEN",
-        1_000_000 * (10 ** 18),
-        18,
+        1_000_000,
+        0,
         {'from': accounts[0]})
 
 

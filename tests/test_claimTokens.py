@@ -45,4 +45,3 @@ def test_claim_not_owner(token, swapContract, accounts):
             0,
             {'from': accounts[1]}
         )
-

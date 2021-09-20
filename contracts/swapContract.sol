@@ -255,7 +255,7 @@ contract SwapContract is AccessControlEnumerable
       * @param account Account address
       * @return Account swap limits array
       */
-    function swapLimitsArray(address account) public view returns (uint256[3] memory)
+    function swapLimitsArray(address account) external view returns (uint256[3] memory)
     {
         return swapLimits[account];
     }
@@ -264,7 +264,7 @@ contract SwapContract is AccessControlEnumerable
       * @dev Returns array that represents if swap enabled for ratio
       * @return Array that represents if swap enabled for ratio
       */
-    function swapEnabledArray() public view returns (bool[3] memory)
+    function swapEnabledArray() external view returns (bool[3] memory)
     {
         return swapEnabled;
     }

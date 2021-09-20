@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import pytest
 
 
@@ -23,11 +21,12 @@ def token(Token, accounts):
 @pytest.fixture(scope="module")
 def swapContract(SwapContract, token, accounts):
     accounts.add('0xaf0eb7e81bb006606dda456218665a08feb04abfda14e16f938eeb70641a768f')
+    accounts.add('0x3148d9d362f20e02e7b0b169bc0169897ce889890ac8b5be08813db91b1f311d')
     return SwapContract.deploy(
         token.address,
         accounts[-1],
         [1, 3, 5],
-        1000 * (10 ** 18),
-        10 * (10 ** 18),
-        [True, False, False],
+        [True, True, True],
+        20,
+        1000,
         {'from': accounts[0]})

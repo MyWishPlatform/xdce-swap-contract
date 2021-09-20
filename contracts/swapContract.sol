@@ -156,7 +156,7 @@ contract SwapContract is AccessControlEnumerable
         amountToReceive = 0;
         uint256 remainder = amountToSend;
         for (uint256 i = 0; i < _swapLimits.length; i++) {
-            if (checkIfSwapEnabled && !swapEnabled[i]) {
+            if (checkIfSwapEnabled && !swapEnabled[i] || swapRatios[i] == 0) {
                 continue;
             }
             uint256 swapLimit = _swapLimits[i];

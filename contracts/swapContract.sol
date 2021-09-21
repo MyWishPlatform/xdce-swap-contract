@@ -98,7 +98,7 @@ contract SwapContract is AccessControlEnumerable
         require(amountToPay > 0, "swapContract: Swap limit reached");
         require(amountToReceive > 0, "swapContract: Amount to receive is zero");
 
-        swapLimits[signedAddress] = swapLimitsNew;
+        swapLimits[sender] = swapLimitsNew;
         swapLimitsSaved[sender] = true;
 
         TransferHelper.safeTransferFrom(address(tokenAddress), sender, address(this), amountToPay);

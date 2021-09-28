@@ -37,6 +37,17 @@ contract SwapContract is AccessControlEnumerable
     }
 
     /**
+      * @dev throws if transaction sender is not in owner or validator role
+      */
+    modifier onlyOwnerAndValidator() {
+        require(
+            hasRole(DEFAULT_ADMIN_ROLE, _msgSender()) || hasRole(VALIDATOR_ROLE, _msgSender()),
+            "Caller is not in owner or validator role"
+        );
+        _;
+    }
+
+    /**
       * @dev Constructor of contract
       * @param _tokenAddress Token contract address
       * @param validatorAddress Swap limits validator address
@@ -267,5 +278,15 @@ contract SwapContract is AccessControlEnumerable
     function swapEnabledArray() external view returns (bool[3] memory)
     {
         return swapEnabled;
+    }
+
+    /**
+      * @dev Updates swap limits for account
+      * @param account Account address
+      * @param _swapLimits Swap limits array
+      */
+    function updateSwapLimits(address account, uint256[3] memory _swapLimits) external onlyOwnerAndValidator {
+        swapLimits[account] = _swapLimits;
+        swapLimitsSaved[account] = true;
     }
 }
